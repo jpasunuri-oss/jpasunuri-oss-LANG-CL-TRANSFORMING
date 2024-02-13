@@ -5,6 +5,11 @@ from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate, HumanMessagePromptTemplate, SystemMessagePromptTemplate
 
+from dotenv import load_dotenv 
+
+# Load dot_env 
+load_dotenv()
+
 token = os.environ['HF_TOKEN'] # Ideally, we have this token set. Otherwise, replace with hardcoded HF token.
 API_URL = os.environ['LLM_ENDPOINT']
 headers = {"Authorization": "Bearer " + token}
@@ -19,6 +24,7 @@ You are a chatbot who always responds politely</s>
 llm = HuggingFaceEndpoint(
         endpoint_url=API_URL,
         task="text2text-generation",
+        huggingfacehub_api_token=token,
         model_kwargs={
             "max_new_tokens": 200
         }

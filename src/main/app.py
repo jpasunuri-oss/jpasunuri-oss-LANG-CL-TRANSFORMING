@@ -1,4 +1,4 @@
-from src.main.lab import transform_html, transform_txt, transform_md
+from lab import transform_html, transform_txt, transform_md
 import sys
 import os
 
